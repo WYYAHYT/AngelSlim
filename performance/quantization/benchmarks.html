@@ -399,6 +399,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen2-5vl">Qwen2.5VL</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deepseek-r1-0528">DeepSeek-R1-0528</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">其他模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int4-gptaq">INT4-GPTAQ</a></li>
 </ul>
             </nav>
         </div>
@@ -1144,6 +1145,74 @@ document.write(`
 </table>
 </div>
 </section>
+<section id="int4-gptaq">
+<h2>INT4-GPTAQ<a class="headerlink" href="#int4-gptaq" title="Link to this heading">#</a></h2>
+<p>INT4-GPTAQ在<code class="docutils literal notranslate"><span class="pre">GSM8K</span></code>、<code class="docutils literal notranslate"><span class="pre">HUMANEVAL</span></code>、<code class="docutils literal notranslate"><span class="pre">GPQA</span> <span class="pre">Diamond</span></code>上的评测结果如下：</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="table-int4-gptaq-performance">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Quantization</p></th>
+<th class="head"><p>GSM8K</p></th>
+<th class="head"><p>HUMANEVAL</p></th>
+<th class="head"><p>GPQA Diamond</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p>Qwen3-4B</p></td>
+<td><p>BF16</p></td>
+<td><p>85.37</p></td>
+<td><p>72.56</p></td>
+<td><p>37.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT4-GPTQ</p></td>
+<td><p>81.65</p></td>
+<td><p>61.59</p></td>
+<td><p>35.35</p></td>
+</tr>
+<tr class="row-even"><td><p>INT4-GPTAQ</p></td>
+<td><p>82.56</p></td>
+<td><p>64.02</p></td>
+<td><p>39.39</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Qwen3-8B</p></td>
+<td><p>BF16</p></td>
+<td><p>87.79</p></td>
+<td><p>63.41</p></td>
+<td><p>32.32</p></td>
+</tr>
+<tr class="row-even"><td><p>INT4-GPTQ</p></td>
+<td><p>86.43</p></td>
+<td><p>62.20</p></td>
+<td><p>34.85</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT4-GPTAQ</p></td>
+<td><p>86.66</p></td>
+<td><p>64.02</p></td>
+<td><p>33.33</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>Qwen3-32B</p></td>
+<td><p>BF16</p></td>
+<td><p>74.53</p></td>
+<td><p>37.80</p></td>
+<td><p>40.40</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT4-GPTQ</p></td>
+<td><p>65.58</p></td>
+<td><p>43.29</p></td>
+<td><p>40.40</p></td>
+</tr>
+<tr class="row-even"><td><p>INT4-GPTAQ</p></td>
+<td><p>69.52</p></td>
+<td><p>37.20</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 
 
@@ -1196,6 +1265,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen2-5vl">Qwen2.5VL</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deepseek-r1-0528">DeepSeek-R1-0528</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">其他模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int4-gptaq">INT4-GPTAQ</a></li>
 </ul>
   </nav></div>
 
