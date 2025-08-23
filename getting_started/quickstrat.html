@@ -445,6 +445,16 @@ document.write(`
 <span class="n">engine</span><span class="o">.</span><span class="n">get_supported_compress_method</span><span class="p">()</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>fp8 block-wise量化可以使用并行GPU转化脚本，其中block_size是权重量化scale对应分块形状，<code class="docutils literal notranslate"><span class="pre">num_workers</span></code>是并行数</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>tools/fp8_quant_blockwise.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--block_size<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_workers<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input_path<span class="w"> </span><span class="si">${</span><span class="nv">INPUT_PATH</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_path<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT_PATH</span><span class="si">}</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="id5">
