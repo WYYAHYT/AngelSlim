@@ -398,6 +398,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen3">Qwen3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen2-5vl">Qwen2.5VL</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deepseek-r1-0528">DeepSeek-R1-0528</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seed-oss-36b-instruct">Seed-OSS-36B-Instruct</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">其他模型</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int4-gptaq">INT4-GPTAQ</a></li>
 </ul>
@@ -922,6 +923,193 @@ document.write(`
 <section id="qwen2-5vl">
 <h2>Qwen2.5VL<a class="headerlink" href="#qwen2-5vl" title="Link to this heading">#</a></h2>
 <p>Qwen2.5VL系列模型的<code class="docutils literal notranslate"><span class="pre">BF16</span></code>、<code class="docutils literal notranslate"><span class="pre">FP8-Static</span></code>、<code class="docutils literal notranslate"><span class="pre">FP8-Dynamic</span></code>、<code class="docutils literal notranslate"><span class="pre">FP8-Static-ViT</span></code>、<code class="docutils literal notranslate"><span class="pre">FP8-Dynamic-ViT</span></code>、<code class="docutils literal notranslate"><span class="pre">INT4-GPTQ</span></code>、<code class="docutils literal notranslate"><span class="pre">INT4-AWQ</span></code>在<code class="docutils literal notranslate"><span class="pre">MMMU_VAL</span></code>、<code class="docutils literal notranslate"><span class="pre">DocVQA_VAL</span></code>、<code class="docutils literal notranslate"><span class="pre">ChartQA_TEST</span></code>上的评测结果如下：</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="table-qwen2-5vl-performance">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Quantization</p></th>
+<th class="head"><p>MMMU_VAL</p></th>
+<th class="head"><p>DocVQA_VAL</p></th>
+<th class="head"><p>ChartQA_TEST</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="7"><p>Qwen2.5VL-3B</p></td>
+<td><p>BF16</p></td>
+<td><p>47.11</p></td>
+<td><p>78.57</p></td>
+<td><p>80.32</p></td>
+</tr>
+<tr class="row-odd"><td><p>FP8-Static</p></td>
+<td><p>47.33</p></td>
+<td><p>79.34</p></td>
+<td><p>79.68</p></td>
+</tr>
+<tr class="row-even"><td><p>FP8-Dynamic</p></td>
+<td><p>47.00</p></td>
+<td><p>78.92</p></td>
+<td><p>79.60</p></td>
+</tr>
+<tr class="row-odd"><td><p>FP8-Static-ViT</p></td>
+<td><p>45.56</p></td>
+<td><p>79.36</p></td>
+<td><p>80.16</p></td>
+</tr>
+<tr class="row-even"><td><p>INT8-Dynamic-ViT</p></td>
+<td><p>46.67</p></td>
+<td><p>79.26</p></td>
+<td><p>79.84</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT4-GPTQ</p></td>
+<td><p>46.56</p></td>
+<td><p>77.20</p></td>
+<td><p>78.96</p></td>
+</tr>
+<tr class="row-even"><td><p>INT4-AWQ</p></td>
+<td><p>45.78</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>79.60</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="7"><p>Qwen2.5VL-7B</p></td>
+<td><p>BF16</p></td>
+<td><p>45.44</p></td>
+<td><p>89.71</p></td>
+<td><p>84.64</p></td>
+</tr>
+<tr class="row-even"><td><p>FP8-Static</p></td>
+<td><p>47.00</p></td>
+<td><p>89.83</p></td>
+<td><p>85.92</p></td>
+</tr>
+<tr class="row-odd"><td><p>FP8-Dynamic</p></td>
+<td><p>47.22</p></td>
+<td><p>89.80</p></td>
+<td><p>88.64</p></td>
+</tr>
+<tr class="row-even"><td><p>FP8-Static-ViT</p></td>
+<td><p>47.00</p></td>
+<td><p>89.85</p></td>
+<td><p>86.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT8-Dynamic-ViT</p></td>
+<td><p>46.44</p></td>
+<td><p>89.68</p></td>
+<td><p>88.72</p></td>
+</tr>
+<tr class="row-even"><td><p>INT4-GPTQ</p></td>
+<td><p>46.67</p></td>
+<td><p>90.45</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>INT4-AWQ</p></td>
+<td><p>45.67</p></td>
+<td><p>89.28</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td rowspan="7"><p>Qwen2.5VL-32B</p></td>
+<td><p>BF16</p></td>
+<td><p>57.00</p></td>
+<td><p>90.03</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>FP8-Static</p></td>
+<td><p>57.00</p></td>
+<td><p>89.88</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>FP8-Dynamic</p></td>
+<td><p>56.44</p></td>
+<td><p>89.88</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>FP8-Static-ViT</p></td>
+<td><p>56.33</p></td>
+<td><p>89.92</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>INT8-Dynamic-ViT</p></td>
+<td><p>57.22</p></td>
+<td><p>89.88</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>INT4-GPTQ</p></td>
+<td><p>55.22</p></td>
+<td><p>89.80</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>INT4-AWQ</p></td>
+<td><p>55.22</p></td>
+<td><p>90.30</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="7"><p>Qwen2.5VL-72B</p></td>
+<td><p>BF16</p></td>
+<td><p>58.78</p></td>
+<td><p>94.39</p></td>
+<td><p>85.60</p></td>
+</tr>
+<tr class="row-even"><td><p>FP8-Static</p></td>
+<td><p>57.89</p></td>
+<td><p>94.41</p></td>
+<td><p>85.84</p></td>
+</tr>
+<tr class="row-odd"><td><p>FP8-Dynamic</p></td>
+<td><p>58.67</p></td>
+<td><p>94.38</p></td>
+<td><p>85.60</p></td>
+</tr>
+<tr class="row-even"><td><p>FP8-Static-ViT</p></td>
+<td><p>57.44</p></td>
+<td><p>94.48</p></td>
+<td><p>85.84</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT8-Dynamic-ViT</p></td>
+<td><p>58.22</p></td>
+<td><p>94.47</p></td>
+<td><p>86.00</p></td>
+</tr>
+<tr class="row-even"><td><p>INT4-GPTQ</p></td>
+<td><p>57.56</p></td>
+<td><p>94.46</p></td>
+<td><p>86.48</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT4-AWQ</p></td>
+<td><p>58.78</p></td>
+<td><p>94.19</p></td>
+<td><p>87.28</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="deepseek-r1-0528">
 <h2>DeepSeek-R1-0528<a class="headerlink" href="#deepseek-r1-0528" title="Link to this heading">#</a></h2>
@@ -953,6 +1141,48 @@ document.write(`
 </tbody>
 </table>
 </div>
+</section>
+<section id="seed-oss-36b-instruct">
+<h2>Seed-OSS-36B-Instruct<a class="headerlink" href="#seed-oss-36b-instruct" title="Link to this heading">#</a></h2>
+<p>Seed-OSS-36B-Instruct模型的<code class="docutils literal notranslate"><span class="pre">FP8-Static</span></code>、<code class="docutils literal notranslate"><span class="pre">FP8-Dynamic</span></code>在<code class="docutils literal notranslate"><span class="pre">CEVAL</span></code>、<code class="docutils literal notranslate"><span class="pre">MMLU</span></code>、<code class="docutils literal notranslate"><span class="pre">GSM8K</span></code>、<code class="docutils literal notranslate"><span class="pre">HUMANEVAL</span></code>上的评测结果如下：</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="table-seed-oss-36b-performance">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Quantization</p></th>
+<th class="head"><p>CEVAL</p></th>
+<th class="head"><p>MMLU</p></th>
+<th class="head"><p>GSM8K-strict</p></th>
+<th class="head"><p>GSM8K-flexible</p></th>
+<th class="head"><p>HUMANEVAL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p>Seed-OSS-36B-Instruct</p></td>
+<td><p>BF16</p></td>
+<td><p>88.19</p></td>
+<td><p>82.97</p></td>
+<td><p>70.36</p></td>
+<td><p>97.12</p></td>
+<td><p>87.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>FP8-Static</p></td>
+<td><p>87.82</p></td>
+<td><p>82.79</p></td>
+<td><p>74.75</p></td>
+<td><p>96.51</p></td>
+<td><p>86.59</p></td>
+</tr>
+<tr class="row-even"><td><p>FP8-Dynamic</p></td>
+<td><p>87.82</p></td>
+<td><p>82.64</p></td>
+<td><p>74.15</p></td>
+<td><p>96.89</p></td>
+<td><p>87.20</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>该数据使用<a class="reference external" href="https://github.com/EleutherAI/lm-evaluation-harness">lm-eval</a>工具评测，注意需要设置<code class="docutils literal notranslate"><span class="pre">--gen_kwargs</span> <span class="pre">max_gen_toks</span></code>防止思考内容过长被截断。</p>
 </section>
 <section id="id1">
 <h2>其他模型<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
@@ -1264,6 +1494,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen3">Qwen3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen2-5vl">Qwen2.5VL</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deepseek-r1-0528">DeepSeek-R1-0528</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seed-oss-36b-instruct">Seed-OSS-36B-Instruct</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">其他模型</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int4-gptaq">INT4-GPTAQ</a></li>
 </ul>
