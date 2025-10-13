@@ -421,6 +421,15 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int4-awq">INT4-AWQ量化</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">配置</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">model配置</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Compression配置</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">INT4-AWQ量化</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -561,6 +570,45 @@ torchrun<span class="w"> </span><span class="se">\</span>
 </section>
 </section>
 </section>
+<section id="int4-awq">
+<h2>INT4-AWQ量化<a class="headerlink" href="#int4-awq" title="Link to this heading">#</a></h2>
+<p>DeepSeekR1的INT4-AWQ量化，可使用vllm部署。其中权重为per-group的粒度，group-size可选64/128；激活为动态per-token量化，可支持激活数据类型为int8/fp8。具体可见对应PR:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>https://github.com/vllm-project/vllm/pull/24722
+</pre></div>
+</div>
+<p>您可以量化<code class="docutils literal notranslate"><span class="pre">AngelSlim/configs/deepseek_r1</span></code>下面带有<code class="docutils literal notranslate"><span class="pre">int4_awq</span></code>字段的模型类型。</p>
+<section id="id12">
+<h3>配置<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>INT4-AWQ <code class="docutils literal notranslate"><span class="pre">confg.yaml</span></code>文件参数配置，您可以参考<code class="docutils literal notranslate"><span class="pre">config/deepseek_r1/int4_awq</span></code>路径下的文件，下面是参数信息介绍。</p>
+<section id="id13">
+<h4>model配置<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>：填写<code class="docutils literal notranslate"><span class="pre">DeepSeek</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch_dtype</span></code>：权重加载时使用的数据类型。设置为<code class="docutils literal notranslate"><span class="pre">fp8</span></code>时可直接加载HF上的deepseek-ai/DeepSeek-R1-0528模型。设置为<code class="docutils literal notranslate"><span class="pre">bf16</span></code>时需要将fp8权重进行转换后再进行量化。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">device_map</span></code>：设置为<code class="docutils literal notranslate"><span class="pre">cpu</span></code>。</p></li>
+</ul>
+</section>
+<section id="id14">
+<h4>Compression配置<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>：压缩策略，填写<code class="docutils literal notranslate"><span class="pre">PTQ</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quantization.name</span></code>：压缩算法选填<code class="docutils literal notranslate"><span class="pre">int4_awq</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quantization.bits</span></code>：量化比特数，设置为4。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quantization.quant_method</span></code>：主要指定权重的量化粒度，设置为<code class="docutils literal notranslate"><span class="pre">per-group</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quantization.group_size</span></code>：权重量化分组数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quantization.zero_point</span></code>：权重量化偏置，设置为<code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quantization.ignore_layers</span></code>：指定模型中不需要量化的层。</p></li>
+</ul>
+</section>
+</section>
+<section id="id15">
+<h3>INT4-AWQ量化<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>您可以通过下面代码启动INT4-AWQ量化流程:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>tools/run.py<span class="w"> </span>--config<span class="w"> </span>configs/deepseek_r1/int4_awq/deepseek_r1_int4_awq.yaml
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -633,6 +681,15 @@ torchrun<span class="w"> </span><span class="se">\</span>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">单卡</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int4-awq">INT4-AWQ量化</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">配置</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">model配置</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Compression配置</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">INT4-AWQ量化</a></li>
 </ul>
 </li>
 </ul>
