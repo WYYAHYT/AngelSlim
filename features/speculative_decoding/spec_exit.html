@@ -441,14 +441,12 @@ document.write(`
 <section id="inference-and-evaluation">
 <h3>Inference and Evaluation<a class="headerlink" href="#inference-and-evaluation" title="Link to this heading">#</a></h3>
 <p>To run inference with the trained <code class="docutils literal notranslate"><span class="pre">SpecExit</span></code> model and evaluate its performance on benchmarks like GSM8K, GPQA, etc., use the <code class="docutils literal notranslate"><span class="pre">spec_benchmark.py</span></code> script.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```shell
-python3 tools/spec_benchmark.py \
-    --base-model-path ${BASE_MODEL} \
-    --eagle-model-path ${SpecExit_Model} \
-    --mode eagle \
-    --num-gpus-total 8 \
-    --early-stop-method confidence_progress_remain
-```
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>tools/spec_benchmark.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--base-model-path<span class="w"> </span><span class="si">${</span><span class="nv">BASE_MODEL</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--eagle-model-path<span class="w"> </span><span class="si">${</span><span class="nv">SpecExit_Model</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mode<span class="w"> </span>eagle<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num-gpus-total<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--early-stop-method<span class="w"> </span>confidence_progress_remain
 </pre></div>
 </div>
 </section>
