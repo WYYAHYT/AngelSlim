@@ -441,7 +441,6 @@ document.write(`
 <span class="w">      </span><span class="nt">activation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;per-token&quot;</span>
 <span class="w">    </span><span class="nt">ignore_layers</span><span class="p">:</span><span class="w">         </span><span class="c1"># Skip quantization for these layers</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;lm_head&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;model.embed_tokens&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -474,8 +473,7 @@ document.write(`
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;int-quantized&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;ignore&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;lm_head&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;model.embed_tokens&quot;</span>
+<span class="w">    </span><span class="s2">&quot;lm_head&quot;</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;kv_cache_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;quant_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;compressed-tensors&quot;</span><span class="p">,</span>
