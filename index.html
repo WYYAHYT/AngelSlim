@@ -179,12 +179,14 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="features/quantization/index.html">量化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/speculative_decoding/index.html">投机采样</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features/diffusion/index.html">文生图/视频/3D压缩</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">模型支持</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="models/hunyuan/hunyuan_quant.html">混元模型量化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/deepseek/deepseek_quant.html">DeepSeek量化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/qwen/qwen_quant.html">Qwen量化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/qwenvl/qwenvl_quant.html">Qwen2.5VL量化指南</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">部署文档</span></p>
 <ul class="nav bd-sidenav">
@@ -430,11 +432,38 @@ document.write(`
 <li><p><strong>持续算法创新</strong>：本工具除了集成工业界使用最广的算法，还持续自研更好的压缩算法，并且会陆续开源。</p></li>
 <li><p><strong>追求极致性能</strong>：在模型压缩流程、压缩算法部署方面，本工具持续端到端优化，致力于用更少的成本压缩部署大模型。</p></li>
 </ul>
-<p>目前支持的压缩策略：</p>
-<ul class="simple">
-<li><p><strong>量化</strong>：动态INT8、静态FP8、动态FP8、INT4-GPTQ、INT4-AWQ等方法；</p></li>
-<li><p><strong>投机采样</strong>：EAGLE2、EAGLE3等方法。</p></li>
-</ul>
+<p>目前支持的模型及压缩策略：</p>
+<p>.. table::</p>
+<dl class="myst field-list">
+<dt class="field-odd">align<span class="colon">:</span></dt>
+<dd class="field-odd"><p>center</p>
+<p>+——————-+—————–+———————-+————+—————–+
+| 场景              | 模型            | 量化                 | 投机采样   | 其他技术        |
++===================+=================+======================+============+=================+
+| <strong>文生文(LLM)</strong>   | Hunyuan-Dense   | FP8-Static/Dynamic   | Eagle3     | <strong>稀疏注意力</strong>  |
+|                   | Hunyuan-MoE     | INT8-Dynamic         | SpecExit   | Minference(建设中) |
+|                   | Qwen3           | INT4-GPTQ/AWQ/GPTAQ  |            |                 |
+|                   | DeepSeek-V3/R1  | LeptoQuant           |            |                 |
+|                   | GLM-4.6         | Tequila              |            |                 |
+|                   | Qwen2.5         |                      |            |                 |
++——————-+—————–+———————-+————+—————–+
+| <strong>图/视频生文(VLM)</strong> | Hunyuan-VL   | FP8-Static/Dynamic   | Eagle3     | <strong>Token剪枝</strong>   |
+|                   | Qwen3-VL        | INT8-Dynamic         |            | 建设中          |
+|                   | Qwen2.5-VL      | INT4-GPTQ/AWQ/GPTAQ  |            |                 |
++——————-+—————–+———————-+————+—————–+
+| <strong>文生图/视频/3D</strong> | Hunyuan-Image  | FP8-Dynamic          | -          | <strong>Cache技术</strong>   |
+|  <strong>(Diffusion)</strong> | Hunyuan-Video   | FP8-Weight-Only      |            | DeepCache       |
+|                   | Hunyuan-3D      |                      |            | TeaCache        |
+|                   | Qwen-Image      |                      |            |                 |
+|                   | FLUX            |                      |            | <strong>稀疏注意力</strong>   |
+|                   | Wan             |                      |            | 建设中          |
+|                   | SDXL            |                      |            |                 |
++——————-+—————–+———————-+————+—————–+
+| <strong>语音(TTS/ASR)</strong> | Qwen3-Omni      | 建设中                 | 建设中     | <strong>Token剪枝</strong>   |
+|                   |                 |                      |            | 建设中          |
++——————-+—————–+———————-+————+—————–+</p>
+</dd>
+</dl>
 <section id="id1">
 <h1>文档<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
@@ -449,6 +478,7 @@ document.write(`
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="features/quantization/index.html">量化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/speculative_decoding/index.html">投机采样</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features/diffusion/index.html">文生图/视频/3D压缩</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -457,6 +487,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="models/hunyuan/hunyuan_quant.html">混元模型量化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/deepseek/deepseek_quant.html">DeepSeek量化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/qwen/qwen_quant.html">Qwen量化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/qwenvl/qwenvl_quant.html">Qwen2.5VL量化指南</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
