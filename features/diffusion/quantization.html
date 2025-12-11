@@ -401,22 +401,27 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">支持的量化类型</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">配置</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">构造函数参数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">主要方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">可选依赖安装</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-gemm-fp8-per-block">deep_gemm（用于 fp8-per-block）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sgl-kernel-fp8-per-token-sgl">sgl_kernel（用于 fp8-per-token-sgl）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">启动量化流程</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">方式1：使用命令行工具</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">配置</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">构造函数参数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">主要方法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">启动量化流程</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">方式1：使用命令行工具</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-api">方式2：使用 Python API</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">从零开始量化</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">加载预量化模型和缩放因子</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">灵活的层选择</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">从零开始量化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">加载预量化模型和缩放因子</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">灵活的层选择</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">部署</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">部署</a></li>
 </ul>
             </nav>
         </div>
@@ -439,23 +444,44 @@ document.write(`
 <li><p><strong>fp8-per-tensor-weight-only</strong>：仅对权重量化（权重：FP8，激活仍为 BF16/FP16），适合对精度有更高要求的场景</p></li>
 <li><p><strong>fp8-per-block</strong>：支持 per-block 量化，适用于 NVIDIA Hopper (SM90+) 架构，block_size目前只支持128</p></li>
 <li><p><strong>fp8-per-token</strong>：精细的 per-token 量化，对多样输入有更强适应性</p></li>
+<li><p><strong>fp8-per-token-sgl</strong>：基于 SGL kernel 的 per-token 量化，使用优化的 CUDA kernel 实现更高效的 per-token 量化和矩阵乘法运算</p></li>
 </ul>
 </section>
 <section id="id2">
-<h2>配置<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>DynamicDiTQuantizer 类提供灵活的配置选项，您可以通过以下参数自定义量化行为：</p>
+<h2>可选依赖安装<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="deep-gemm-fp8-per-block">
+<h3>deep_gemm（用于 fp8-per-block）<a class="headerlink" href="#deep-gemm-fp8-per-block" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fp8-per-block</span></code> 量化在启用 <code class="docutils literal notranslate"><span class="pre">native_fp8_support</span></code> 时需要安装 <code class="docutils literal notranslate"><span class="pre">deep_gemm</span></code>：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/deepseek-ai/DeepGEMM.git<span class="w"> </span>
+<span class="nb">cd</span><span class="w"> </span>DeepGEMM
+./develop.sh
+./install.sh
+</pre></div>
+</div>
+</section>
+<section id="sgl-kernel-fp8-per-token-sgl">
+<h3>sgl_kernel（用于 fp8-per-token-sgl）<a class="headerlink" href="#sgl-kernel-fp8-per-token-sgl" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fp8-per-token-sgl</span></code> 量化需要安装 <code class="docutils literal notranslate"><span class="pre">sgl_kernel</span></code>：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sgl-kernel<span class="o">==</span><span class="m">0</span>.3.18
+</pre></div>
+</div>
+</section>
+</section>
 <section id="id3">
-<h3>构造函数参数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h2>配置<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>DynamicDiTQuantizer 类提供灵活的配置选项，您可以通过以下参数自定义量化行为：</p>
+<section id="id4">
+<h3>构造函数参数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">quant_type</span></code>（str）：量化类型，可选值 “fp8-per-tensor”、”fp8-per-tensor-weight-only”、”fp8-per-block”、”fp8-per-token”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quant_type</span></code>（str）：量化类型，可选值 “fp8-per-tensor”、”fp8-per-tensor-weight-only”、”fp8-per-block”、”fp8-per-token”、”fp8-per-token-sgl”</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">include_patterns</span></code>（List[str|re.Pattern], 可选）：指定需要量化的层名称模式，支持字符串或正则表达式</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">exclude_patterns</span></code>（List[str|re.Pattern], 可选）：指定需要排除的层名称模式，支持字符串或正则表达式</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">layer_filter</span></code>（Callable, 可选）：自定义层筛选函数（高级自定义场景专用）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">native_fp8_support</span></code>（bool, 可选）：是否启用原生FP8硬件加速（自动检测，默认None）</p></li>
 </ul>
 </section>
-<section id="id4">
-<h3>主要方法<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>主要方法<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">convert_linear(model,</span> <span class="pre">scale=None)</span></code>：对模型指定层进行量化</p>
 <ul>
@@ -472,10 +498,10 @@ document.write(`
 </ul>
 </section>
 </section>
-<section id="id5">
-<h2>启动量化流程<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <section id="id6">
-<h3>方式1：使用命令行工具<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h2>启动量化流程<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h3>方式1：使用命令行工具<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">scripts/diffusion/run_diffusion.py</span></code> 脚本进行量化与推理：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在线量化并运行推理</span>
 python<span class="w"> </span>scripts/diffusion/run_diffusion.py<span class="w"> </span><span class="se">\</span>
@@ -504,8 +530,8 @@ python<span class="w"> </span>scripts/diffusion/run_diffusion.py<span class="w">
 </section>
 <section id="python-api">
 <h3>方式2：使用 Python API<a class="headerlink" href="#python-api" title="Link to this heading">#</a></h3>
-<section id="id7">
-<h4>从零开始量化<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<section id="id8">
+<h4>从零开始量化<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">diffusers</span><span class="w"> </span><span class="kn">import</span> <span class="n">FluxPipeline</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">angelslim.compressor.diffusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamicDiTQuantizer</span>
@@ -525,8 +551,8 @@ python<span class="w"> </span>scripts/diffusion/run_diffusion.py<span class="w">
 </pre></div>
 </div>
 </section>
-<section id="id8">
-<h4>加载预量化模型和缩放因子<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<section id="id9">
+<h4>加载预量化模型和缩放因子<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">diffusers</span><span class="w"> </span><span class="kn">import</span> <span class="n">FluxPipeline</span><span class="p">,</span> <span class="n">FluxTransformer2DModel</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">angelslim.compressor.diffusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamicDiTQuantizer</span>
@@ -553,8 +579,8 @@ python<span class="w"> </span>scripts/diffusion/run_diffusion.py<span class="w">
 </pre></div>
 </div>
 </section>
-<section id="id9">
-<h4>灵活的层选择<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<section id="id10">
+<h4>灵活的层选择<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>支持通过 include/exclude 模式灵活筛选需要量化的层：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">angelslim.compressor.diffusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamicDiTQuantizer</span>
 
@@ -583,8 +609,8 @@ python<span class="w"> </span>scripts/diffusion/run_diffusion.py<span class="w">
 </section>
 </section>
 </section>
-<section id="id10">
-<h2>部署<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h2>部署<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <p>量化后的模型可直接用于推理。如需导出量化权重以便后续复用，可使用以下方法：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">diffusers</span><span class="w"> </span><span class="kn">import</span> <span class="n">FluxPipeline</span>
@@ -652,22 +678,27 @@ python<span class="w"> </span>scripts/diffusion/run_diffusion.py<span class="w">
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">支持的量化类型</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">配置</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">构造函数参数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">主要方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">可选依赖安装</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-gemm-fp8-per-block">deep_gemm（用于 fp8-per-block）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sgl-kernel-fp8-per-token-sgl">sgl_kernel（用于 fp8-per-token-sgl）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">启动量化流程</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">方式1：使用命令行工具</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">配置</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">构造函数参数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">主要方法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">启动量化流程</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">方式1：使用命令行工具</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-api">方式2：使用 Python API</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">从零开始量化</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">加载预量化模型和缩放因子</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">灵活的层选择</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">从零开始量化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">加载预量化模型和缩放因子</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">灵活的层选择</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">部署</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">部署</a></li>
 </ul>
   </nav></div>
 
