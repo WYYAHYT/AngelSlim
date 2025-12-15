@@ -398,7 +398,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eagle3">Eagle3</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen3-series-models">Qwen3 Series Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunyuan-series-models">Hunyuan Series Models</a></li>
 </ul>
 </li>
 </ul>
@@ -420,329 +419,189 @@ document.write(`
 <h3>Qwen3 Series Models<a class="headerlink" href="#qwen3-series-models" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>MT-bench</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>HumanEval</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>GSM8K</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>Alpaca</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>Mean</p></th>
-<th class="head"><p></p></th>
+<tr class="row-odd"><th class="head text-left"><p>Model</p></th>
+<th class="head text-left"><p>Method</p></th>
+<th class="head text-left"><p>GSM8K</p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p>Alpaca</p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p>HumanEval</p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p>MT-bench</p></th>
+<th class="head text-left"><p></p></th>
+<th class="head text-left"><p>Mean</p></th>
+<th class="head text-left"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p></p></td>
-<td><p>Model</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p><strong>throughput (tokens/s)</strong></p></td>
+<td class="text-left"><p><strong>accept length</strong></p></td>
+<td class="text-left"><p><strong>throughput (tokens/s)</strong></p></td>
+<td class="text-left"><p><strong>accept length</strong></p></td>
+<td class="text-left"><p><strong>throughput (tokens/s)</strong></p></td>
+<td class="text-left"><p><strong>accept length</strong></p></td>
+<td class="text-left"><p><strong>throughput (tokens/s)</strong></p></td>
+<td class="text-left"><p><strong>accept length</strong></p></td>
+<td class="text-left"><p><strong>throughput (tokens/s)</strong></p></td>
+<td class="text-left"><p><strong>accept length</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Qwen3-1.7B</p></td>
-<td><p>2.05x</p></td>
-<td><p>2.81</p></td>
-<td><p>2.07x</p></td>
-<td><p>2.93</p></td>
-<td><p>2.11x</p></td>
-<td><p>2.98</p></td>
-<td><p>1.93x</p></td>
-<td><p>2.69</p></td>
-<td><p>2.04x</p></td>
-<td><p>2.85</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Qwen3-1.7B</strong></p></td>
+<td class="text-left"><p>Vanilla</p></td>
+<td class="text-left"><p>376.42</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>378.86</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>378.38</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>390.53</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>318.05</p></td>
+<td class="text-left"><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Qwen3-4B</p></td>
-<td><p>2.21x</p></td>
-<td><p>3.01</p></td>
-<td><p>2.36x</p></td>
-<td><p>3.24</p></td>
-<td><p>2.42x</p></td>
-<td><p>3.13</p></td>
-<td><p>2.32x</p></td>
-<td><p>2.75</p></td>
-<td><p>2.33x</p></td>
-<td><p>3.03</p></td>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p>Eagle3</p></td>
+<td class="text-left"><p>616.9</p></td>
+<td class="text-left"><p>2.13</p></td>
+<td class="text-left"><p>653.29</p></td>
+<td class="text-left"><p>2.19</p></td>
+<td class="text-left"><p>680.1</p></td>
+<td class="text-left"><p>2.2</p></td>
+<td class="text-left"><p>621.44</p></td>
+<td class="text-left"><p>2.17</p></td>
+<td class="text-left"><p>642.93</p></td>
+<td class="text-left"><p>2.18</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Temperature=0</strong></p></td>
-<td><p>Qwen3-8B</p></td>
-<td><p>2.63x</p></td>
-<td><p>3.65</p></td>
-<td><p>2.76x</p></td>
-<td><p>3.85</p></td>
-<td><p>2.82x</p></td>
-<td><p>3.90</p></td>
-<td><p>2.62x</p></td>
-<td><p>3.48</p></td>
-<td><p>2.70x</p></td>
-<td><p>3.72</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Qwen3-4B</strong></p></td>
+<td class="text-left"><p>Vanilla</p></td>
+<td class="text-left"><p>229.05</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>235.29</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>234.66</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>234.04</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>233.26</p></td>
+<td class="text-left"><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Qwen3-14B</p></td>
-<td><p>2.23x</p></td>
-<td><p>3.30</p></td>
-<td><p>2.53x</p></td>
-<td><p>3.74</p></td>
-<td><p>2.56x</p></td>
-<td><p>3.79</p></td>
-<td><p>2.16x</p></td>
-<td><p>3.13</p></td>
-<td><p>2.37x</p></td>
-<td><p>3.49</p></td>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p>Eagle3</p></td>
+<td class="text-left"><p>389.35</p></td>
+<td class="text-left"><p>2.07</p></td>
+<td class="text-left"><p>395.97</p></td>
+<td class="text-left"><p>2.1</p></td>
+<td class="text-left"><p>377.84</p></td>
+<td class="text-left"><p>2.08</p></td>
+<td class="text-left"><p>384.6</p></td>
+<td class="text-left"><p>2.07</p></td>
+<td class="text-left"><p>386.94</p></td>
+<td class="text-left"><p>2.08</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Qwen3-32B</p></td>
-<td><p>2.39x</p></td>
-<td><p>2.78</p></td>
-<td><p>2.37x</p></td>
-<td><p>2.81</p></td>
-<td><p>2.47x</p></td>
-<td><p>2.92</p></td>
-<td><p>2.42x</p></td>
-<td><p>2.53</p></td>
-<td><p>2.41x</p></td>
-<td><p>2.76</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Qwen3-8B</strong></p></td>
+<td class="text-left"><p>Vanilla</p></td>
+<td class="text-left"><p>149.63</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>149.93</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>153.85</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>153.81</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>151.81</p></td>
+<td class="text-left"><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Qwen3-30B-A3B</p></td>
-<td><p>2.84x</p></td>
-<td><p>3.63</p></td>
-<td><p>2.27x</p></td>
-<td><p>3.09</p></td>
-<td><p>2.64x</p></td>
-<td><p>3.42</p></td>
-<td><p>2.83x</p></td>
-<td><p>3.56</p></td>
-<td><p>2.64x</p></td>
-<td><p>3.42</p></td>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p>Eagle3</p></td>
+<td class="text-left"><p>257.32</p></td>
+<td class="text-left"><p>2</p></td>
+<td class="text-left"><p>266.69</p></td>
+<td class="text-left"><p>2.02</p></td>
+<td class="text-left"><p>244.89</p></td>
+<td class="text-left"><p>1.97</p></td>
+<td class="text-left"><p>258.2</p></td>
+<td class="text-left"><p>1.97</p></td>
+<td class="text-left"><p>257.52</p></td>
+<td class="text-left"><p>1.99</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Qwen3-14B</strong></p></td>
+<td class="text-left"><p>Vanilla</p></td>
+<td class="text-left"><p>92.97</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>92.66</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>92.94</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>94.46</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>93.26</p></td>
+<td class="text-left"><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Qwen3-1.7B</p></td>
-<td><p>1.74x</p></td>
-<td><p>2.53</p></td>
-<td><p>1.86x</p></td>
-<td><p>2.70</p></td>
-<td><p>1.82x</p></td>
-<td><p>2.69</p></td>
-<td><p>1.93x</p></td>
-<td><p>2.46</p></td>
-<td><p>1.75x</p></td>
-<td><p>2.60</p></td>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p>Eagle3</p></td>
+<td class="text-left"><p>153.72</p></td>
+<td class="text-left"><p>1.87</p></td>
+<td class="text-left"><p>140.46</p></td>
+<td class="text-left"><p>1.78</p></td>
+<td class="text-left"><p>144.68</p></td>
+<td class="text-left"><p>1.76</p></td>
+<td class="text-left"><p>142.45</p></td>
+<td class="text-left"><p>1.74</p></td>
+<td class="text-left"><p>145.33</p></td>
+<td class="text-left"><p>1.79</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Qwen3-4B</p></td>
-<td><p>1.93x</p></td>
-<td><p>2.60</p></td>
-<td><p>2.00x</p></td>
-<td><p>2.84</p></td>
-<td><p>2.11x</p></td>
-<td><p>2.82</p></td>
-<td><p>2.34x</p></td>
-<td><p>2.50</p></td>
-<td><p>1.75x</p></td>
-<td><p>2.69</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Qwen3-32B</strong></p></td>
+<td class="text-left"><p>Vanilla</p></td>
+<td class="text-left"><p>43.39</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>43.38</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>43.19</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>43.3</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>43.32</p></td>
+<td class="text-left"><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Temperature=1</strong></p></td>
-<td><p>Qwen3-8B</p></td>
-<td><p>1.98x</p></td>
-<td><p>2.75</p></td>
-<td><p>2.25x</p></td>
-<td><p>3.11</p></td>
-<td><p>2.31x</p></td>
-<td><p>3.15</p></td>
-<td><p>2.10x</p></td>
-<td><p>2.76</p></td>
-<td><p>2.90x</p></td>
-<td><p>2.94</p></td>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p>Eagle3</p></td>
+<td class="text-left"><p>80.43</p></td>
+<td class="text-left"><p>2.01</p></td>
+<td class="text-left"><p>72.49</p></td>
+<td class="text-left"><p>1.9</p></td>
+<td class="text-left"><p>71.57</p></td>
+<td class="text-left"><p>1.86</p></td>
+<td class="text-left"><p>74.1</p></td>
+<td class="text-left"><p>1.86</p></td>
+<td class="text-left"><p>74.1</p></td>
+<td class="text-left"><p>1.91</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Qwen3-14B</p></td>
-<td><p>1.71x</p></td>
-<td><p>2.61</p></td>
-<td><p>1.95x</p></td>
-<td><p>2.87</p></td>
-<td><p>2.04x</p></td>
-<td><p>3.08</p></td>
-<td><p>1.68x</p></td>
-<td><p>2.55</p></td>
-<td><p>2.90x</p></td>
-<td><p>2.78</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Qwen3-30B-A3B</strong></p></td>
+<td class="text-left"><p>Vanilla</p></td>
+<td class="text-left"><p>311.84</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>320.43</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>325.77</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>325.42</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>320.87</p></td>
+<td class="text-left"><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Qwen3-32B</p></td>
-<td><p>1.62x</p></td>
-<td><p>1.91</p></td>
-<td><p>1.71x</p></td>
-<td><p>2.05</p></td>
-<td><p>1.78x</p></td>
-<td><p>2.10</p></td>
-<td><p>1.80x</p></td>
-<td><p>1.95</p></td>
-<td><p>1.62x</p></td>
-<td><p>2.00</p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Qwen3-30B-A3B</p></td>
-<td><p>1.91x</p></td>
-<td><p>2.46</p></td>
-<td><p>2.00x</p></td>
-<td><p>2.64</p></td>
-<td><p>1.90x</p></td>
-<td><p>2.53</p></td>
-<td><p>1.80x</p></td>
-<td><p>2.32</p></td>
-<td><p>1.90x</p></td>
-<td><p>2.48</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="hunyuan-series-models">
-<h3>Hunyuan Series Models<a class="headerlink" href="#hunyuan-series-models" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>MT-bench</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>HumanEval</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>GSM8K</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>Alpaca</p></th>
-<th class="head"><p></p></th>
-<th class="head"><p>Mean</p></th>
-<th class="head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p></p></td>
-<td><p>Model</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-<td><p>Speedup</p></td>
-<td><p>τ</p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Hunyuan-1.8B</p></td>
-<td><p>1.97x</p></td>
-<td><p>2.90</p></td>
-<td><p>2.58x</p></td>
-<td><p>3.73</p></td>
-<td><p>2.61x</p></td>
-<td><p>3.71</p></td>
-<td><p>1.71x</p></td>
-<td><p>2.43</p></td>
-<td><p>2.22x</p></td>
-<td><p>3.19</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Temperature=0</strong></p></td>
-<td><p>Hunyuan-4B</p></td>
-<td><p>1.77x</p></td>
-<td><p>2.60</p></td>
-<td><p>2.64x</p></td>
-<td><p>3.35</p></td>
-<td><p>2.14x</p></td>
-<td><p>3.17</p></td>
-<td><p>1.72x</p></td>
-<td><p>2.57</p></td>
-<td><p>2.07x</p></td>
-<td><p>2.92</p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Hunyuan-7B</p></td>
-<td><p>2.22x</p></td>
-<td><p>3.58</p></td>
-<td><p>3.59x</p></td>
-<td><p>5.47</p></td>
-<td><p>2.96x</p></td>
-<td><p>4.68</p></td>
-<td><p>1.64x</p></td>
-<td><p>2.56</p></td>
-<td><p>2.60x</p></td>
-<td><p>4.07</p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Hunyuan-1.8B</p></td>
-<td><p>1.58x</p></td>
-<td><p>2.36</p></td>
-<td><p>2.35x</p></td>
-<td><p>3.56</p></td>
-<td><p>2.23x</p></td>
-<td><p>3.38</p></td>
-<td><p>1.26x</p></td>
-<td><p>1.87</p></td>
-<td><p>1.86x</p></td>
-<td><p>2.79</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Temperature=1</strong></p></td>
-<td><p>Hunyuan-1.8B</p></td>
-<td><p>1.36x</p></td>
-<td><p>2.05</p></td>
-<td><p>1.97x</p></td>
-<td><p>2.86</p></td>
-<td><p>1.72x</p></td>
-<td><p>2.68</p></td>
-<td><p>1.14x</p></td>
-<td><p>1.76</p></td>
-<td><p>1.55x</p></td>
-<td><p>2.34</p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Hunyuan-1.8B</p></td>
-<td><p>1.90x</p></td>
-<td><p>3.11</p></td>
-<td><p>3.12x</p></td>
-<td><p>5.09</p></td>
-<td><p>2.74x</p></td>
-<td><p>4.34</p></td>
-<td><p>1.47x</p></td>
-<td><p>2.39</p></td>
-<td><p>2.31x</p></td>
-<td><p>3.73</p></td>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p>Eagle3</p></td>
+<td class="text-left"><p>453.97</p></td>
+<td class="text-left"><p>2.1</p></td>
+<td class="text-left"><p>432.45</p></td>
+<td class="text-left"><p>2.04</p></td>
+<td class="text-left"><p>428.81</p></td>
+<td class="text-left"><p>2.02</p></td>
+<td class="text-left"><p>437.06</p></td>
+<td class="text-left"><p>2.01</p></td>
+<td class="text-left"><p>438.07</p></td>
+<td class="text-left"><p>2.04</p></td>
 </tr>
 </tbody>
 </table>
@@ -798,7 +657,6 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eagle3">Eagle3</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen3-series-models">Qwen3 Series Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunyuan-series-models">Hunyuan Series Models</a></li>
 </ul>
 </li>
 </ul>
