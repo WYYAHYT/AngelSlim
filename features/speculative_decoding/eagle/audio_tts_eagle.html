@@ -523,6 +523,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">--base-model-path</span></code>: 基础模型路径（必需）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--eagle-model-path</span></code>: Eagle辅助模型路径（必需）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--model-id</span></code>: 模型标识符（必需）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--is-tts</span></code>: 是否为TTS模型，默认为False</p></li>
 </ul>
 <p><strong>基准测试配置：</strong></p>
 <ul class="simple">
@@ -567,7 +568,9 @@ document.write(`
 <span class="w">    </span>--model-id<span class="w"> </span>cosyvoice3<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mode<span class="w"> </span>both<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output-dir<span class="w"> </span>./results<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--deploy-backend<span class="w"> </span>pytorch_tts<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--deploy-backend<span class="w"> </span>pytorch<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--is-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bench-name<span class="w"> </span>tts_fake_data<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--generate-audio
 </pre></div>
 </div>
@@ -592,7 +595,9 @@ python3<span class="w"> </span>tools/spec_benchmark.py<span class="w"> </span><s
 <span class="w">    </span>--model-id<span class="w"> </span>cosyvoice3<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mode<span class="w"> </span>both<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output-dir<span class="w"> </span>./results<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--deploy-backend<span class="w"> </span>pytorch_tts
+<span class="w">    </span>--deploy-backend<span class="w"> </span>pytorch<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--is-tts<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bench-name<span class="w"> </span>tts_fake_data<span class="w"> </span><span class="se">\</span>
 </pre></div>
 </div>
 </section>
