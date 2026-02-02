@@ -443,7 +443,7 @@ document.write(`
 <p><a class="reference external" href="https://arxiv.org/pdf/2503.01840">Eagle3</a>是目前最常用、加速效果最好的投机采样算法。
 本项目包括Eagle3的训练以及benchmark测试，并开源了Qwen3和Hunyuan系列的<a class="reference external" href="https://huggingface.co/collections/AngelSlim/eagle3">Eagle3权重</a>。</p>
 <p>我们训练的Qwen3系列Eagle3模型的表现可以参见基准测试<a class="reference internal" href="../../../performance/speculative_decoding/benchmarks.html"><span class="std std-doc">benchmarks</span></a>，
-其中全部数据都是在单张H20上使用vLLM推理获得。</p>
+其中全部数据都是在单张GPU上使用vLLM推理获得。</p>
 <section id="id1">
 <h2>1. 数据生成<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>数据生成包括：1）为目标模型生成采样数据，2）为Eagle3模型离线生成目标模型的hidden states。</p>
