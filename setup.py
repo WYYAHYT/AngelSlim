@@ -1,21 +1,11 @@
-# Copyright 2025 Tencent Inc. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 """Setup for pip package."""
+import os
 import subprocess
 
 from setuptools import find_packages, setup
+
+# 获取 setup.py 所在目录的绝对路径
+here = os.path.abspath(os.path.dirname(__file__))
 
 TOOLS_VERSION = None
 
@@ -28,7 +18,9 @@ else:
 
 def get_requirements(filename):
     """Load dependency packages from specified requirements file"""
-    with open(filename) as f:
+    # 使用绝对路径，基于 setup.py 所在目录
+    req_path = os.path.join(here, filename)
+    with open(req_path, encoding='utf-8') as f:
         return [
             line.strip()
             for line in f.readlines()
